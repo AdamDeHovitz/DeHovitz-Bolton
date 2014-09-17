@@ -1,4 +1,4 @@
-<html>
+
 <head><title>Constituional!</title></head>
 <body style="background-color:#E68081">
 <form method="GET" action="constitution.py">
@@ -6,17 +6,17 @@
 <br> <center> If you are here it can only mean that <br>
 you have a deep insatiable curiosity for constitutions<br>
 <br>
-Or you might be grading me, either or </center>
+Or you might be grading us, either or </center>
 <br> <br>
 <center><b> Choose two and only two constitutions to compare </b> <br><br>
-<center>Russian Federations <input type="checkbox" name="Russia" value="Yes"><br>
+<center>Russian Federation<input type="checkbox" name="Russia" value="Yes"><br>
 <center>USSR <input type="checkbox" name="ussr" value="Yes"><br>
-<center>United states of America <input type="checkbox" name="usa" value="Yes"><br>
-<center>France <input type="checkbox" name="france" value="Yes"><br>
-<center>France 1791 <input type="checkbox" name="seventeen" value="Yes"><br>
+<center>United States of America <input type="checkbox" name="usa" value="Yes"><br>
+<center>France, Modern <input type="checkbox" name="france" value="Yes"><br>
+<center>France, 1791 <input type="checkbox" name="seventeen" value="Yes"><br>
 <center>Iran <input type="checkbox" name="iran" value="Yes"><br>
-<center>Magna Carta? <input type="checkbox" name="magna" value="Yes"><br>
-<center>Communist Manifesto?? <input type="checkbox" name="manifesto" value="Yes"><br>
+<center>Magna Carta <input type="checkbox" name="magna" value="Yes"><br>
+<center>Communist Manifesto <input type="checkbox" name="manifesto" value="Yes"><br>
 <br>
 <br>
 <center> <b> What do you want to do with them? </b> <br><br>
@@ -31,7 +31,6 @@ Or you might be grading me, either or </center>
 </center>
 <br>
 </form>
-<br> <br> <br> <br> After you are done you should go to <a href="http://149.89.161.100/~adam.dehovitz/adamspg.html">this page</a> which is infinitely less lame and uncompelling 
 <br>
 </body>
 </html>
