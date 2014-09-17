@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request 
+from flask import Flask,render_template, request
 #<center>And how many words? <input type="text" name="topwords" size="5" value="50"><br>
 
 
@@ -12,27 +12,27 @@ def test():
     return "hello world"
 
 @app.route("/start")
-def start():    
+def start():
     return render_template("constitutionoptions.html")
 
 
 @app.route("/results", methods = ["POST", "GET"])
 def main():
-   
-    if request.method == 'POST':
-        elements = request.form["Yes"]
-        
-        
-        return elements
-       
-        
 
-        s = ""; 
- 
+    if request.method == 'POST':
+        elements = request.form.getlist("Yes")
+
+
+        return elements
+
+
+
+        s = "";
+
         checked=0
         Dict={'one':[],'two':[]}
         #return "Succcess"
-        '''
+
         one=1
         two=2
         if elements.has_key('iran'):
@@ -42,7 +42,7 @@ def main():
             iran=iran.lower()
             iran=iran.split()
             Dict['one'].append(iran)
-            
+
             checked+=1
         if elements.has_key('usa'):
             b=open('unitedstates.txt')
@@ -56,7 +56,7 @@ def main():
             else:
                 Dict['two'].append("USA's constitution")
                 Dict['two'].append(usaw)
-       
+
         if elements.has_key('seventeen'):
             c=open('1791France.txt')
             revolution=c.read()
@@ -69,7 +69,7 @@ def main():
             else:
                 Dict['two'].append("French constitution of 1791")
                 Dict['two'].append(revolution)
-            
+
         if elements.has_key('Russia'):
             d=open('russia.txt')
             rus=d.read()
@@ -82,7 +82,7 @@ def main():
             else:
                 Dict['two'].append("Russian Federation' constitution")
                 Dict['two'].append(rus)
-        
+
         if elements.has_key('ussr'):
             e=open('USSR.txt')
             ussr=e.read()
@@ -95,7 +95,7 @@ def main():
             else:
                 Dict['two'].append("Union of Soviet Socialist Republic's constitution")
                 Dict['two'].append(ussr)
-        
+
         if elements.has_key('france'):
             f=open('France.txt')
             france=f.read()
@@ -108,7 +108,7 @@ def main():
             else:
                 Dict['two'].append("French constitution")
                 Dict['two'].append(france)
-            
+
         if elements.has_key('manifesto'):
             g=open('manifesto.txt')
             manifesto=g.read()
@@ -121,7 +121,7 @@ def main():
             else:
                 Dict['two'].append("Communist Manifesto")
                 Dict['two'].append(manifesto)
-            
+
         if elements.has_key('magna'):
             h=open('Magnacarta.txt')
             magna=h.read()
@@ -134,7 +134,7 @@ def main():
             else:
                 Dict['two'].append("Magna Carta")
                 Dict['two'].append(magna)
-        checker=0     
+        checker=0
         if checked!=2:
             s+= '<br><center><font size="10"> <b> I said two gosh darn it!<br> </b> <font size="7"> <a href="constitutionoptions.html">Go back</a>'
             return s
@@ -180,13 +180,13 @@ def main():
             s+= 'There are '+ str(len(new))+" common words and they are:<br>"
             r=0
             new.sort()
-        
+
             for word in new:
                 s+= word+'  '
                 r+=1
                 if r==6:
                     s+= '<br>'
-                
+
                     r=0
         if elements.has_key('letters'):
             checker+=1
@@ -201,20 +201,20 @@ def main():
             s+= Dict['one'][0]+': '
             s+= letters(Dict['one'])
             s+= "<br>"+ Dict['two'][0]+": "
-            s+= letters(Dict['two'])   
+            s+= letters(Dict['two'])
         if checker==0:
             s+= '<br><br><br><font size="5"> <b> But you forgot to check off actions to take!</b>'
             s+= '<br>  <a href="constitutionoptions.html">Go back!</a>'
             return s
-            
+
         s+= '<br><br> <br> <b> Resources</b><br> All constitutions taken from <a href="http://www.constitution.org/cons/natlcons.htm">here</a>'
         s+= '<br> manifesto taken from <a href="http://www.gutenberg.org/ebooks/61"> here</a>'
         s+= '<br> French constitution of 1791 taken from <a href="http://ic.ucsc.edu/~traugott/hist171/readings/1791-09ConstitutionOf1791"> here</a>'
         s+= '<br> and Magna Carta taken from <a href="http://www.constitution.org/eng/magnacar.htm"> here</a>'
         return s
-        '''
+
 def top50(filen,number):
-    
+
     s = ""
     cm=filen
     d={}
@@ -234,7 +234,7 @@ def top50(filen,number):
     x=x[::-1]
     y=0
     n=0
-    
+
     dr=0
     while y<int(number):
         for w in d:
@@ -244,10 +244,10 @@ def top50(filen,number):
                 if dr==4:
                     dr=0
                     s+= '<br>'
-            
-            if d[w]==x[y]: 
+
+            if d[w]==x[y]:
                 s+= str(y+1)+') '+w+': '+str(x[y])
-                
+
                 y+=1
     return s
 def letters(x):
@@ -257,10 +257,10 @@ def letters(x):
     for word in constitution:
         for l in word:
             d.append(l)
-    
+
     s+= len(d)
     return s
 
 if __name__=="__main__":
     app.debug=True
-    app.run() 
+    app.run()
