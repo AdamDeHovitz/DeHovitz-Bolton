@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request 
+from flask import Flask,render_template, request
 #<center>And how many words? <input type="text" name="topwords" size="5" value="50"><br>
 
 
@@ -12,27 +12,40 @@ def test():
     return "hello world"
 
 @app.route("/start")
-def start():    
+def start():
     return render_template("constitutionoptions.html")
 
 
 @app.route("/results", methods = ["POST", "GET"])
 def main():
-   
+
     if request.method == 'POST':
+<<<<<<< HEAD
         elements = request.form["Submit"]
         
         #return elements;
         
        
         
+=======
+        elements = request.form.getlist("Yes")
 
-        s = ""; 
- 
+
+        return elements
+>>>>>>> FETCH_HEAD
+
+
+
+        s = "";
+
         checked=0
         Dict={'one':[],'two':[]}
         #return "Succcess"
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> FETCH_HEAD
         one=1
         two=2
         if 'Iran' in elements:
@@ -42,7 +55,7 @@ def main():
             iran=iran.lower()
             iran=iran.split()
             Dict['one'].append(iran)
-            
+
             checked+=1
         if 'USA' in elements:
             b=open('unitedstates.txt')
@@ -56,8 +69,13 @@ def main():
             else:
                 Dict['two'].append("USA's constitution")
                 Dict['two'].append(usaw)
+<<<<<<< HEAD
        
         if '1791' in elements:
+=======
+
+        if elements.has_key('seventeen'):
+>>>>>>> FETCH_HEAD
             c=open('1791France.txt')
             revolution=c.read()
             revolution=revolution.lower()
@@ -69,8 +87,13 @@ def main():
             else:
                 Dict['two'].append("French constitution of 1791")
                 Dict['two'].append(revolution)
+<<<<<<< HEAD
             
         if 'Russia' in elements:
+=======
+
+        if elements.has_key('Russia'):
+>>>>>>> FETCH_HEAD
             d=open('russia.txt')
             rus=d.read()
             rus=rus.lower()
@@ -82,8 +105,13 @@ def main():
             else:
                 Dict['two'].append("Russian Federation' constitution")
                 Dict['two'].append(rus)
+<<<<<<< HEAD
         
         if 'USSR' in elements:
+=======
+
+        if elements.has_key('ussr'):
+>>>>>>> FETCH_HEAD
             e=open('USSR.txt')
             ussr=e.read()
             ussr=ussr.lower()
@@ -95,8 +123,13 @@ def main():
             else:
                 Dict['two'].append("Union of Soviet Socialist Republic's constitution")
                 Dict['two'].append(ussr)
+<<<<<<< HEAD
         
         if 'France' in elements:
+=======
+
+        if elements.has_key('france'):
+>>>>>>> FETCH_HEAD
             f=open('France.txt')
             france=f.read()
             france=france.lower()
@@ -108,8 +141,13 @@ def main():
             else:
                 Dict['two'].append("French constitution")
                 Dict['two'].append(france)
+<<<<<<< HEAD
             
         if 'Manifesto' in elements:
+=======
+
+        if elements.has_key('manifesto'):
+>>>>>>> FETCH_HEAD
             g=open('manifesto.txt')
             manifesto=g.read()
             manifesto=manifesto.lower()
@@ -121,8 +159,13 @@ def main():
             else:
                 Dict['two'].append("Communist Manifesto")
                 Dict['two'].append(manifesto)
+<<<<<<< HEAD
             
         if 'Magna' in elements:
+=======
+
+        if elements.has_key('magna'):
+>>>>>>> FETCH_HEAD
             h=open('Magnacarta.txt')
             magna=h.read()
             magna=magna.lower()
@@ -134,7 +177,7 @@ def main():
             else:
                 Dict['two'].append("Magna Carta")
                 Dict['two'].append(magna)
-        checker=0     
+        checker=0
         if checked!=2:
             s+= '<br><center><font size="10"> <b> I said two gosh darn it!<br> </b> <font size="7"> <a href="constitutionoptions.html">Go back</a>'
             return s
@@ -180,13 +223,13 @@ def main():
             s+= 'There are '+ str(len(new))+" common words and they are:<br>"
             r=0
             new.sort()
-        
+
             for word in new:
                 s+= word+'  '
                 r+=1
                 if r==6:
                     s+= '<br>'
-                
+
                     r=0
         if True: #elements.has_key('letters'):
             checker+=1
@@ -201,20 +244,28 @@ def main():
             s+= Dict['one'][0]+': '
             s+= str(letters(Dict['one']))
             s+= "<br>"+ Dict['two'][0]+": "
+<<<<<<< HEAD
             s+= str(letters(Dict['two']))   
+=======
+            s+= letters(Dict['two'])
+>>>>>>> FETCH_HEAD
         if checker==0:
             s+= '<br><br><br><font size="5"> <b> But you forgot to check off actions to take!</b>'
             s+= '<br>  <a href="constitutionoptions.html">Go back!</a>'
             return s
-            
+
         s+= '<br><br> <br> <b> Resources</b><br> All constitutions taken from <a href="http://www.constitution.org/cons/natlcons.htm">here</a>'
         s+= '<br> manifesto taken from <a href="http://www.gutenberg.org/ebooks/61"> here</a>'
         s+= '<br> French constitution of 1791 taken from <a href="http://ic.ucsc.edu/~traugott/hist171/readings/1791-09ConstitutionOf1791"> here</a>'
         s+= '<br> and Magna Carta taken from <a href="http://www.constitution.org/eng/magnacar.htm"> here</a>'
         return s
+<<<<<<< HEAD
     #'''
+=======
+
+>>>>>>> FETCH_HEAD
 def top50(filen,number):
-    
+
     s = ""
     cm=filen
     d={}
@@ -234,7 +285,7 @@ def top50(filen,number):
     x=x[::-1]
     y=0
     n=0
-    
+
     dr=0
     while y<int(number):
         for w in d:
@@ -244,10 +295,10 @@ def top50(filen,number):
                 if dr==4:
                     dr=0
                     s+= '<br>'
-            
-            if d[w]==x[y]: 
+
+            if d[w]==x[y]:
                 s+= str(y+1)+') '+w+': '+str(x[y])
-                
+
                 y+=1
     return s
 def letters(x):
@@ -258,10 +309,10 @@ def letters(x):
     for word in constitution:
         for l in word:
             d.append(l)
-    
+
     s+= len(d)
     return s
 
 if __name__=="__main__":
     app.debug=True
-    app.run() 
+    app.run()
