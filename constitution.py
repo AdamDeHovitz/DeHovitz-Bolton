@@ -8,9 +8,6 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def test():
-    return "hello world"
-
 @app.route("/start")
 def start():
     return render_template("constitutionoptions.html")
