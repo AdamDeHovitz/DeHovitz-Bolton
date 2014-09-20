@@ -29,12 +29,12 @@ def main():
 
 
 
-
         s = "";
 
         checked=0
         Dict={'one':[],'two':[]}
         #return "Succcess"
+
         one=1
         two=2
         if 'Iran' in elements:
